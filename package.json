@@ -4,7 +4,9 @@
   "description": "Playwright trial",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "run:test": "playwright test",
+    "show:report": "playwright show-report"
   },
   "repository": {
     "type": "git",
@@ -19,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/richardforjoesky/playwright.poc/issues"
   },
-  "homepage": "https://github.com/richardforjoesky/playwright.poc#readme"
+  "homepage": "https://github.com/richardforjoesky/playwright.poc#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.32.3"
+  }
 }
