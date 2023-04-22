@@ -4,7 +4,6 @@
   "description": "Playwright trial",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "run:test": "playwright test",
     "show:report": "playwright show-report"
   },
