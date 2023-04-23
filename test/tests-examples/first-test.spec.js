@@ -54,7 +54,7 @@ test("Play music", async () => {
 
 test("Click dropdown", async () => {
   // function code
-  const browser = await webkit.launch({ headless: false, slowMo: 100 });
+  const browser = await webkit.launch();
   const page = await browser.newPage();
   await page.goto("https://the-internet.herokuapp.com/dropdown");
   const dropdown = await page.$("#dropdown");
