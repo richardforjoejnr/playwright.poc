@@ -1,9 +1,9 @@
-const { webkit, test } = require("@playwright/test");
+const { chromium, test } = require("@playwright/test");
 
 test("Type something", async () => {
   // function code
   // launching browser
-  const browser = await webkit.launch({ headless: false, slowMo: 100 });
+  const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto("https://the-internet.herokuapp.com/forgot_password");
   // code to type in email textbox
@@ -16,7 +16,7 @@ test("Type something", async () => {
 test("Play music", async () => {
   // function code
   // launching browser
-  const browser = await webkit.launch({ headless: false, slowMo: 100 });
+  const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto("https://www.apronus.com/music/lessons/unit01.htm");
   // click on  the keynotes
@@ -54,7 +54,7 @@ test("Play music", async () => {
 
 test("Click dropdown", async () => {
   // function code
-  const browser = await webkit.launch();
+  const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto("https://the-internet.herokuapp.com/dropdown");
   const dropdown = await page.$("#dropdown");
