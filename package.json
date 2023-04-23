@@ -1,0 +1,27 @@
+{
+  "name": "playright.poc",
+  "version": "1.0.0",
+  "description": "Playwright trial",
+  "main": "index.js",
+  "scripts": {
+    "run:test": "playwright test",
+    "show:report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardforjoesky/playwright.poc.git"
+  },
+  "keywords": [
+    "playwright",
+    "automation"
+  ],
+  "author": "Richard Forjoe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richardforjoesky/playwright.poc/issues"
+  },
+  "homepage": "https://github.com/richardforjoesky/playwright.poc#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.32.3"
+  }
+}
