@@ -1,25 +1,4 @@
 const { webkit, test } = require("@playwright/test");
-const UkPage = require("./../../pom/models/uk.page");
-
-test("Launch sky news", async () => {
-  const browser = await webkit.launch({ headless: false, sloMo: 10000 });
-  const page = await browser.newPage();
-  //function code
-  const ukpage = new UkPage(page);
-  await ukpage.launch();
-
-  // Wait for the iframe to load and get the frame
-  const frame = await page.waitForSelector(
-    'iframe[src*="cdn.privacy-mgmt.com"]',
-    { timeout: 10000 }
-  );
-  const iframe = await frame.contentFrame();
-
-  // Wait for the 'Accept all' button to be visible and click it
-  await iframe.waitForSelector("text=Accept all", { timeout: 10000 });
-  const acceptAllButton = await iframe.locator("text=Accept all");
-  await acceptAllButton.click();
-});
 
 test("Type something", async () => {
   // function code
