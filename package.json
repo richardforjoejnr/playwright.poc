@@ -10,6 +10,7 @@
     "test:regression": "playwright test --project=regression",
     "test:smoke": "playwright test --project=smoke",
     "test:non-prod": "playwright test --project=all",
+    "test:allbrowsers": "playwright test --project=e2e-chromium --project=e2e-firefox --project=e2e-webkit",
     "codegen": "playwright codegen",
     "show:report": "playwright show-report"
   },

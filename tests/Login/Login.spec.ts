@@ -9,7 +9,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Login Tests', () => {
 
-  test('Login with standard_user and save session state', async ({ loginPage }) => {
+  test('Login with standard_user and save session state @smoke', async ({ loginPage }) => {
     // Arrange
     await loginPage.visit();
     await loginPage.shouldBeLoaded();
@@ -25,7 +25,7 @@ test.describe('Login Tests', () => {
     await loginPage.logout();
   });
 
-  test('Login with locked_out_user and expect error', async ({ loginPage }) => {
+  test('Login with locked_out_user and expect error @regression', async ({ loginPage }) => {
     // Arrange
     await loginPage.visit();
     await loginPage.shouldBeLoaded();
@@ -38,7 +38,7 @@ test.describe('Login Tests', () => {
     console.log(`\x1b[2m\tError displayed as expected for locked_out_user\x1b[0m`);
   });
 
-  test('Login with problem_user and verify access', async ({ loginPage }) => {
+  test('Login with problem_user and verify access @regression', async ({ loginPage }) => {
     // Arrange
     await loginPage.visit();
     await loginPage.shouldBeLoaded();
@@ -66,7 +66,7 @@ test.describe('Login Tests', () => {
     await loginPage.logout();
   });
 
-  test('Login with error_user and verify access', async ({ loginPage }) => {
+  test('Login with error_user and verify access @regression', async ({ loginPage }) => {
     // Arrange
     await loginPage.visit();
     await loginPage.shouldBeLoaded();
@@ -80,7 +80,7 @@ test.describe('Login Tests', () => {
     await loginPage.logout();
   });
 
-  test('Login with visual_user and verify access', async ({ loginPage }) => {
+  test('Login with visual_user and verify access @regression', async ({ loginPage }) => {
     // Arrange
     await loginPage.visit();
     await loginPage.shouldBeLoaded();

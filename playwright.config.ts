@@ -13,16 +13,10 @@ dotenv.config({ path: path.resolve(__dirname, `.env`) });
  */
 export default defineConfig({
   testDir: "./tests",
-  testIgnore: "**/tests-examples/*.example.ts",
-  /* Run tests in files in parallel */
   fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 2 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: process.env.CI
     ? [
         ["list"],
@@ -47,23 +41,14 @@ export default defineConfig({
             },
           },
         ],
-        ["json", { outputFile: "results.json" }], // Add JSON reporter for CI
+        ["json", { outputFile: "results.json" }],
       ]
-    : [
-        ["html"], // Use HTML reporter locally
-      ],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+    : [["html"]],
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: config.baseUrl || "https://portal.vocovo.com/",
+    baseURL: config.baseUrl || "https://www.saucedemo.com/",
     testIdAttribute: "data-test",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
-
-    /* Set storage state to reuse session */
-    // storageState: path.resolve(__dirname, './storageState.json'),
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
   },
 
@@ -76,7 +61,6 @@ export default defineConfig({
         storageState: ".auth/user.json",
       },
       dependencies: ["setup"],
-      grepInvert: /@production/, // Exclude @production tagged tests
     },
     {
       name: "regression",
@@ -97,34 +81,34 @@ export default defineConfig({
       grep: /@smoke/,
     },
     {
-      name: "sanity",
-      use: {
-        ...devices["Desktop Chrome"],
-        storageState: ".auth/user.json",
-      },
-      dependencies: ["setup"],
-      grep: /@sanity/,
-    },
-    {
-      name: "production",
-      use: {
-        ...devices["Desktop Chrome"],
-        storageState: ".auth/user.json",
-      },
-      dependencies: ["setup"],
-      grep: /@production/,
-    },
-    {
       name: "setup",
       use: { ...devices["Desktop Chrome"] },
       testMatch: /.*\.setup\.ts/,
     },
+    // E2E projects for each browser
+    {
+      name: "e2e-chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: ".auth/user.json",
+      },
+      dependencies: ["setup"],
+    },
+    {
+      name: "e2e-firefox",
+      use: {
+        ...devices["Desktop Firefox"],
+        storageState: ".auth/user.json",
+      },
+      dependencies: ["setup"],
+    },
+    {
+      name: "e2e-webkit",
+      use: {
+        ...devices["Desktop Safari"],
+        storageState: ".auth/user.json",
+      },
+      dependencies: ["setup"],
+    },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });
