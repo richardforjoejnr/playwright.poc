@@ -1,0 +1,37 @@
+{
+  "name": "playright.poc",
+  "version": "1.0.0",
+  "description": "Playwright trial",
+  "main": "index.js",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:regression": "playwright test --project=regression",
+    "test:smoke": "playwright test --project=smoke",
+    "test:non-prod": "playwright test --project=all",
+    "test:allbrowsers": "playwright test --project=e2e-chromium --project=e2e-firefox --project=e2e-webkit",
+    "codegen": "playwright codegen",
+    "show:report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardforjoesky/playwright.poc.git"
+  },
+  "keywords": [
+    "playwright",
+    "automation"
+  ],
+  "author": "Richard Forjoe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richardforjoesky/playwright.poc/issues"
+  },
+  "homepage": "https://github.com/richardforjoesky/playwright.poc#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.48.2",
+    "@types/node": "^22.9.0",
+    "dotenv": "^16.4.5",
+    "playwright-qase-reporter": "^2.0.16"
+  }
+}
